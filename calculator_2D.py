@@ -7,61 +7,80 @@ root.resizable(width=False, height=False)
 # background color
 color = 'gray26'
 root.configure(bg=color)
+operator = ""
+text_input = StringVar()
 # =====================Functions============================
+def btn_click(numbers):
+    global operator
+    operator+=str(numbers)
+    text_input.set(operator)
+    
+    
+    
+def btn_clear_display():
+    global operator
+    operator = ""
+    text_input.set("")
 
-# =====================Frames===============================
-frame1 = Frame(root, width=500, height=80, bg=color)
-frame1.pack(side=TOP)
-
-frame2 = Frame(root, width=500, height=10, highlightbackground=color)
-frame2.pack(side=TOP)
-
-frame3 = Frame(root, width=500, height=10, highlightbackground=color)
-frame3.pack(side=TOP)
-
-frame4 = Frame(root, width=500, height=10, highlightbackground=color)
-frame4.pack(side=TOP)
-
-frame5 = Frame(root, width=500, height=10, highlightbackground=color)
-frame5.pack(side=TOP)
-
-frame6 = Frame(root, width=500, height=10, highlightbackground=color)
-frame6.pack(side=TOP)
+def btn_equal_input():
+    global operator
+    sumup = str(eval(operator))
+    text_input.set(sumup)
+    operator=""
+    
+    
 # ==================Labels & Entry==========================
-result_display = Entry(frame1, font=('arial', 20, 'bold'), bd=10, justify='right').grid(columnspan=4)
+result_display = Entry(root, font=('arial', 20, 'bold'),
+                       bd=10, justify='right').grid(columnspan=4)
 # =====================Buttons==============================
-button_number_7 = Button(frame3, width=8, height=5, text='7', bd=5).pack(side=LEFT, pady=2, padx=2)
 
 
-button_number_8 = Button(frame3, width=8, height=5, text='8', bd=5).pack(side=LEFT, pady=2, padx=2)
+button_number_7 = Button(root, padx=12, pady=12, text='7', bd=5, font=(
+    'arial', 20, 'bold')).grid(row=1, column=0)
 
+button_number_8 = Button(root, padx=12, pady=12, text='8', bd=5, font=(
+    'arial', 20, 'bold')).grid(row=1, column=1)
 
-button_number_9 = Button(frame3, width=8, height=5, text='9', bd=5).pack(side=LEFT, pady=2, padx=2)
+button_number_9 = Button(root, padx=12, pady=12, text='9', bd=5, font=(
+    'arial', 20, 'bold')).grid(row=1, column=2)
 
-button_oprator_multiply = Button(frame3, width=8, height=5, text='x', bd=5).pack(side=LEFT, pady=2, padx=2)
-# ------------------------------------------------------------
-button_number_4 = Button(frame4, width=8, height=5, text='4', bd=5).pack(side=LEFT, pady=2, padx=2)
+button_oprator_multiply = Button(root, padx=12, pady=12, text='x', bd=5, font=(
+    'arial', 20, 'bold')).grid(row=1, column=3)
+# # ------------------------------------------------------------
+button_number_4 = Button(root, padx=12, pady=12, text='4', bd=5, font=(
+    'arial', 20, 'bold')).grid(row=2, column=0)
 
-button_number_5 = Button(frame4, width=8, height=5, text='5', bd=5).pack(side=LEFT, pady=2, padx=2)
+button_number_5 = Button(root, padx=12, pady=12, text='5', bd=5, font=(
+    'arial', 20, 'bold')).grid(row=2, column=1)
 
-button_number_6 = Button(frame4, width=8, height=5, text='6', bd=5).pack(side=LEFT, pady=2, padx=2)
+button_number_6 = Button(root, padx=12, pady=12, text='6', bd=5, font=(
+    'arial', 20, 'bold')).grid(row=2, column=2)
 
-button_oprator_minus = Button(frame4, width=8, height=5, text='-', bd=5).pack(side=LEFT, pady=2, padx=2)
-# -----------------------------------------------------------
-button_number_1 = Button(frame5, width=8, height=5, text='1', bd=5).pack(side=LEFT, pady=2, padx=2)
+button_oprator_minus = Button(root, padx=15, pady=12, text='-',
+                              bd=5, font=('arial', 20, 'bold')).grid(row=2, column=3)
+# # -----------------------------------------------------------
+button_number_1 = Button(root, padx=12, pady=12, text='1', bd=5, font=(
+    'arial', 20, 'bold')).grid(row=3, column=0)
 
-button_number_2 = Button(frame5, width=8, height=5, text='2', bd=5).pack(side=LEFT, pady=2, padx=2)
+button_number_2 = Button(root, padx=12, pady=12, text='2', bd=5, font=(
+    'arial', 20, 'bold')).grid(row=3, column=1)
 
-button_number_3 = Button(frame5, width=8, height=5, text='3', bd=5).pack(side=LEFT, pady=2, padx=2)
+button_number_3 = Button(root, padx=12, pady=12, text='3', bd=5, font=(
+    'arial', 20, 'bold')).grid(row=3, column=2)
 
-button_oprator_plus = Button(frame5, width=8, height=5, text='+', bd=5).pack(side=LEFT, pady=2, padx=2)
-# ---------------------------------------------------------
-button_oprator_remainder = Button(frame6, width=8, height=5, text='%', bd=5,).pack(side=LEFT, pady=2, padx=2)
+button_oprator_plus = Button(root, padx=12, pady=12, text='+',
+                             bd=5, font=('arial', 20, 'bold')).grid(row=3, column=3)
+# # # ---------------------------------------------------------
+button_oprator_remainder = Button(root, padx=7, pady=12, text='%', bd=5, font=(
+    'arial', 20, 'bold')).grid(row=4, column=0)
 
-button_number_0 = Button(frame6, width=8, height=5, text='0', bd=5).pack(side=LEFT, pady=2, padx=2)
+button_number_0 = Button(root, padx=12, pady=12, text='0', bd=5, font=(
+    'arial', 20, 'bold')).grid(row=4, column=1)
 
-button_clear = Button(frame6, width=8, height=5, text='=', bd=5).pack(side=LEFT, pady=2, padx=2)
+button_clear = Button(root, padx=9, pady=12, text='C', bd=5, font=(
+    'arial', 20, 'bold')).grid(row=4, column=2)
 
-button_oprator = Button(frame6, width=8, height=5, text='X', bd=5).pack(side=LEFT, pady=2, padx=2)
+button_oprator = Button(root, padx=12, pady=12, text='=', bd=5, font=(
+    'arial', 20, 'bold')).grid(row=4, column=3)
 # ==========================================================
 root.mainloop()
